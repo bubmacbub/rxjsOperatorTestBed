@@ -44,8 +44,26 @@ and it is best to wait to see if more input is coming -->
 <!-- <p>Mouse click event mapped to client x value and then interval inner function for two secs concat mapped</p>
 <div *ngIf="clientXhighOrderIntervalMulti | async as localVar">clientXhighOrderIntervalMulti:  {{localVar}}</div> -->
 
-<p>Mouse click event mapped to client x value and then waits for interval inner function for two takes of two seconds a emit then a switch map</p>
-<div *ngIf="clientXhighOrderIntervalSwitchMap | async as localVar">clientXhighOrderIntervalSwitchMap:  {{localVar}}</div>
+<!-- <p>Mouse click event mapped to client x value and then waits for interval inner function for two takes of two seconds a emit then a switch map</p>
+<div *ngIf="clientXhighOrderIntervalSwitchMap | async as localVar">clientXhighOrderIntervalSwitchMap:  {{localVar}}</div> -->
+
+
+<!-- <p>The mouse click mapped to client X with a throttle Time of 2000.  The behavior should display the value of 
+  the last clientX in a two second span.  If you click during throttle time it will not display
+</p>
+<div *ngIf="lastClientXInTwoSeconds | async as localVar">lastClientXInTwoSeconds:  {{localVar}}</div>
+ -->
+
+
+ <!-- <p>Using click event to send an interval observable
+</p>
+<div *ngIf="lastClientXIntervalTwoSeconds | async as localVar">lastClientXIntervalTwoSeconds:  {{localVar}}</div> -->
+
+
+
+<p>combine first is the timer and then the event click mapped to client x
+</p>
+<div *ngIf="combinedClientXAndTimer | async as localVar">combinedClientXAndTimer:  {{localVar}}</div>
 
 
 

@@ -41,6 +41,22 @@ mouseEventClientX = this.clicks$.pipe(map(
   (ev : MouseEvent)=> ev.clientX)
 );
 
+
+lastClientXInTwoSeconds = this.mouseEventClientX.pipe(
+  throttleTime(2000)
+);
+
+
+lastClientXIntervalTwoSeconds = this.mouseEventClientX.pipe(
+  map(x=> interval(2000))
+);
+
+
+combinedClientXAndTimer = combineLatest(this.firstTimer, this.mouseEventClientX).pipe(
+  tap(x=> console.log("combined timer and client ", x))
+)
+
+
 //Only different mouse clicks
 // distinctClick = this.clicks$.pipe(distinct(), tap(x=>console.log("got a new one", x)))
 distinctClickScreenX = this.mouseEventClientX.pipe(
