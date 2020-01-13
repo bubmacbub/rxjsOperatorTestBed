@@ -79,7 +79,10 @@ clientXhighOrderIntervalSwitchMap = this.mouseEventClientX.pipe(
     tap(x => console.log("Debounced click event:", x))
     );
 
-
+debouncedClientX = this.mouseEventClientX.pipe(
+  debounceTime(2000),
+  
+)
 
   higherOrder = this.clicks$.pipe(
 

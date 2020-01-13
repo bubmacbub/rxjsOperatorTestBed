@@ -30,10 +30,26 @@
 <div *ngIf="counterDataStream$ | async as counterS">Counter DataStream  {{counterS}}</div> -->
 
 
+<!-- <div>
+  Use for preventing double clicks or for on key up events were the input stream could still have more
+and it is best to wait to see if more input is coming 
+</div>
+ <div *ngIf="debouncedClicks1000 | async as localVar">debouncedClicks1000:  {{localVar}}</div> 
+ -->
 
-<!-- Use for preventing double clicks or for on key up events were the input stream could still have more
-and it is best to wait to see if more input is coming -->
-<!-- <div *ngIf="debouncedClicks1000 | async as localVar">debouncedClicks1000:  {{localVar}}</div>  -->
+ <!-- <div>
+  Use for preventing double clicks or for on key up events were the input stream could still have more
+and it is best to wait to see if more input is coming 
+</div>
+ <div *ngIf="debouncedClicks1000 | async as localVar">debouncedClicks1000:  {{localVar}}</div>  -->
+
+ <div>
+  Same as debounced Clicks but off the client x stream
+</div>
+ <div *ngIf="debouncedClientX | async as localVar">debouncedClientX:  {{localVar}}</div> 
+
+
+ 
 
 
 <!-- <p>Mouse click event mapped to client x value and then distinct function run</p>
@@ -60,10 +76,13 @@ and it is best to wait to see if more input is coming -->
 <div *ngIf="lastClientXIntervalTwoSeconds | async as localVar">lastClientXIntervalTwoSeconds:  {{localVar}}</div> -->
 
 
-
+<!-- 
 <p>combine first is the timer and then the event click mapped to client x
 </p>
 <div *ngIf="combinedClientXAndTimer | async as localVar">combinedClientXAndTimer:  {{localVar}}</div>
+ -->
+
+
 
 
 
