@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
 
   }
 
+  mouseEventClientXLOCAL: number;
+
   firstTimer = timer(0, 1000).pipe(
     tap(x => console.log("first timer pumping out nums: ", x))
   );
@@ -43,13 +45,12 @@ mouseEventClientX = this.clicks$.pipe(map(
 
 clientXMergeMap = this.mouseEventClientX.pipe(
   mergeMap(x => 
-    
     interval(1000).pipe(
-      tap(tap1=> console.log("interval | clientx Merg map tap1:", tap1)),
-      tap(tap2=> console.log("client X: "+ tap2 + "' ", x)),
+      tap(tap1=> console.log("interval | seconds:" + tap1 + " for client X", x)),
+    
       map(i => x+i))),
 ).pipe(
-  tap(tap1=> console.log("clientXMergeMap | clientx Merg map tap1:", tap1)),
+  tap(tap3=> console.log("clientXMergeMap | merge mapped:" , tap3)),
 );
 
 lastClientXInTwoSeconds = this.mouseEventClientX.pipe(
@@ -241,5 +242,11 @@ debouncedClientX = this.mouseEventClientX.pipe(
   setCounter(newCount: number) {
     console.log("Set Counter: ", newCount);
     this.counterSubject.next(newCount);
+  }
+
+
+  updateScreenX(clientX:number)
+  {
+    this.mouseEventClientXLOCAL= clientX;
   }
 }
