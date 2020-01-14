@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fromEvent, Observable, interval, BehaviorSubject, timer, combineLatest, of, concat } from 'rxjs';
-import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct, mergeMap, exhaustMap, flatMap } from 'rxjs/operators';
+import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct, mergeMap, exhaustMap, flatMap, withLatestFrom } from 'rxjs/operators';
 
 
 // const clicks = fromEvent(document, 'click');
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   mouseEventClientXLOCAL: number;
-
+  oneInterval = interval(1000);
   firstTimer = timer(0, 1000).pipe(
     tap(x => console.log("first timer pumping out nums: ", x))
   );
@@ -88,6 +88,14 @@ clientXFlatMap = this.mouseEventClientX.pipe(
       map(i => x+i))),
 ).pipe(
   tap(tap3=> console.log("flatMap | after tap:" , tap3)),
+);
+
+
+
+clientXwithLatestFrom = this.mouseEventClientX.pipe(
+  withLatestFrom(this.oneInterval.pipe(
+    tap(tap1=> console.log("interval | seconds: " + tap1))
+  ))
 );
 
 

@@ -24,14 +24,22 @@
 
  
 
- <div>
+ <!-- <div>
 Get every value from every second 
 Will get multiple records if within interval
 </div>
  <div *ngIf="clientXFlatMap | async as localVar">clientXFlatMap:  {{localVar}}</div> 
 
- 
+  -->
 
+
+  <div>
+    Inner interval observable keeps going while only taking the last client X value
+    </div>
+     <div *ngIf="clientXwithLatestFrom | async as localVar">clientXwithLatestFrom:  {{localVar}}</div> 
+    
+     
+ 
 
 <!-- 
 <div *ngIf="combineClickAndTimerStream | async as localCountVariable">combineClickAndTimerStream:  {{localCountVariable}}</div>
