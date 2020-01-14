@@ -1,8 +1,18 @@
 <!-- <div *ngIf="blah$ | async as blahS">blah blah blah:  {{blahS}}</div>
-<div *ngIf="powerOfTwo | async as blahS">powerOfTwo:  {{blahS}}</div>
+<div *ngIf="powerOfTwo | async as blahS">powerOfTwo:  {{blahS}}</div> -->
+
+
+<div>
+  Mouse click's Event/data stream's Screen X value mergedmapped
+</div>
+ <div *ngIf="clientXMergeMap | async as localVar">clientXMergeMap:  {{localVar}}</div> 
+
+
+ 
 
 
 
+<!-- 
 <div *ngIf="combineClickAndTimerStream | async as localCountVariable">combineClickAndTimerStream:  {{localCountVariable}}</div>
 
 <div *ngIf="combineAllHigherOrder | async as combineAll">combineAllHigherOrder:  {{combineAll}}</div> -->
@@ -43,13 +53,13 @@ and it is best to wait to see if more input is coming
 </div>
  <div *ngIf="debouncedClicks1000 | async as localVar">debouncedClicks1000:  {{localVar}}</div>  -->
 
- <div>
+ <!-- <div>
   Same as debounced Clicks but off the client x stream
 </div>
  <div *ngIf="debouncedClientX | async as localVar">debouncedClientX:  {{localVar}}</div> 
 
 
- 
+  -->
 
 
 <!-- <p>Mouse click event mapped to client x value and then distinct function run</p>

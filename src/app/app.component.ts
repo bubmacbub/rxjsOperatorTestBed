@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fromEvent, Observable, interval, BehaviorSubject, timer, combineLatest, of, concat } from 'rxjs';
-import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct } from 'rxjs/operators';
+import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct, mergeMap } from 'rxjs/operators';
 
 
 // const clicks = fromEvent(document, 'click');
@@ -41,6 +41,16 @@ mouseEventClientX = this.clicks$.pipe(map(
   (ev : MouseEvent)=> ev.clientX)
 );
 
+clientXMergeMap = this.mouseEventClientX.pipe(
+  mergeMap(x => 
+    
+    interval(1000).pipe(
+      tap(tap1=> console.log("interval | clientx Merg map tap1:", tap1)),
+      tap(tap2=> console.log("client X: "+ tap2 + "' ", x)),
+      map(i => x+i))),
+).pipe(
+  tap(tap1=> console.log("clientXMergeMap | clientx Merg map tap1:", tap1)),
+);
 
 lastClientXInTwoSeconds = this.mouseEventClientX.pipe(
   throttleTime(2000)
@@ -81,7 +91,7 @@ clientXhighOrderIntervalSwitchMap = this.mouseEventClientX.pipe(
 
 debouncedClientX = this.mouseEventClientX.pipe(
   debounceTime(2000),
-  
+
 )
 
   higherOrder = this.clicks$.pipe(
