@@ -53,6 +53,21 @@ clientXMergeMap = this.mouseEventClientX.pipe(
   tap(tap3=> console.log("clientXMergeMap | merge mapped:" , tap3)),
 );
 
+
+clientXSwitchMap = this.mouseEventClientX.pipe(
+  switchMap(x => 
+    interval(1000).pipe(
+      tap(tap1=> console.log("interval | seconds:" + tap1 + " for client X", x)),
+    
+      map(i => x+i))),
+).pipe(
+  tap(tap3=> console.log("clientXSwitchMap | switch mapped:" , tap3)),
+);
+
+
+
+
+
 lastClientXInTwoSeconds = this.mouseEventClientX.pipe(
   throttleTime(2000)
 );
