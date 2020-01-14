@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { fromEvent, Observable, interval, BehaviorSubject, timer, combineLatest, of, concat } from 'rxjs';
-import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct, mergeMap } from 'rxjs/operators';
+import { throttle, tap, map, scan, mapTo, bufferTime, last, filter, switchMap, distinctUntilChanged, throttleTime, shareReplay, combineAll, take, concatAll, concatMap, delay, expand, debounceTime, distinct, mergeMap, exhaustMap, flatMap } from 'rxjs/operators';
 
 
 // const clicks = fromEvent(document, 'click');
@@ -41,6 +41,9 @@ export class AppComponent implements OnInit {
 
 mouseEventClientX = this.clicks$.pipe(map(
   (ev : MouseEvent)=> ev.clientX)
+).pipe(
+  tap(tap1=> console.log("mapped event to client x" + tap1)),
+    
 );
 
 clientXMergeMap = this.mouseEventClientX.pipe(
@@ -50,7 +53,7 @@ clientXMergeMap = this.mouseEventClientX.pipe(
     
       map(i => x+i))),
 ).pipe(
-  tap(tap3=> console.log("clientXMergeMap | merge mapped:" , tap3)),
+  tap(tap3=> console.log("clientXMergeMap | after tap:" , tap3)),
 );
 
 
@@ -61,10 +64,31 @@ clientXSwitchMap = this.mouseEventClientX.pipe(
     
       map(i => x+i))),
 ).pipe(
-  tap(tap3=> console.log("clientXSwitchMap | switch mapped:" , tap3)),
+  tap(tap3=> console.log("clientXSwitchMap | after tap:" , tap3)),
 );
 
 
+clientXExhaustMap = this.mouseEventClientX.pipe(
+  exhaustMap(x => 
+    interval(1000).pipe(
+      tap(tap1=> console.log("interval | seconds:" + tap1 + " for client X", x)),
+    
+      map(i => x+i))),
+).pipe(
+  tap(tap3=> console.log("exhaustMap | after tap:" , tap3)),
+);
+
+
+
+clientXFlatMap = this.mouseEventClientX.pipe(
+  flatMap(x => 
+    interval(1000).pipe(
+      tap(tap1=> console.log("interval | seconds:" + tap1 + " for client X", x)),
+    
+      map(i => x+i))),
+).pipe(
+  tap(tap3=> console.log("flatMap | after tap:" , tap3)),
+);
 
 
 

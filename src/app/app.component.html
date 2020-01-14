@@ -11,14 +11,26 @@
  <div *ngIf="clientXMergeMap | async as localVar">clientXMergeMap:  {{localVar}}</div>  -->
 
 
- <div>
+ <!-- <div>
   Mouse click's Event/data stream's Screen X value switch mapped
 </div>
- <div *ngIf="clientXSwitchMap | async as localVar">clientXSwitchMap:  {{localVar}}</div> 
+ <div *ngIf="clientXSwitchMap | async as localVar">clientXSwitchMap:  {{localVar}}</div>  -->
 
  
+ <!-- <div>
+  Does not care about any other click other than the first
+</div>
+ <div *ngIf="clientXExhaustMap | async as localVar">clientXExhaustMap:  {{localVar}}</div>  -->
+
  
 
+ <div>
+Get every value from every second 
+Will get multiple records if within interval
+</div>
+ <div *ngIf="clientXFlatMap | async as localVar">clientXFlatMap:  {{localVar}}</div> 
+
+ 
 
 
 <!-- 
